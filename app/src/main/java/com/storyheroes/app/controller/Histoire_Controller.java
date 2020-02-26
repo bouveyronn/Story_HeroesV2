@@ -2,6 +2,7 @@ package com.storyheroes.app.controller;
 
 import com.storyheroes.app.model.Histoire;
 import com.storyheroes.app.repository.Histoire_Repository;
+import com.storyheroes.app.service.HistoireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,31 +11,27 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/histoire")
-@CrossOrigin
 public class Histoire_Controller {
 
+    //Déclaration des services
     @Autowired
-    private Histoire_Repository histoireRepo;
+    private HistoireService histoireService;
+
+
 
     @GetMapping
-    public List<Histoire> getHistoire(){
+    public List<Histoire> getHistoires(){
+        return histoireService.getHistoires();
+    }
 
-        try{
-            Thread.sleep(2000);
-        }catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
-        }
-        return histoireRepo.findAll();
+    @GetMapping("/{id}")
+    public Histoire getHistoire(@PathVariable(name = "id")Long id){
+        return  histoireService.getHistoireById(id);
     }
 
     @GetMapping(params = "q")
     public List<Histoire> getHistoireBySearch(@RequestParam(name = "q") String search){
-        try{
-            Thread.sleep(1000);
-        }catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
-        }
-        return histoireRepo.findByTitreContaining(search);
+        return histoireService.getHistoireBySearch(search);
     }
 
     

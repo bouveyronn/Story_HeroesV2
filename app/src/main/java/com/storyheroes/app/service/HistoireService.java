@@ -19,7 +19,7 @@ public class HistoireService {
 
     public List<Histoire> getHistoires(){
         try{
-            Thread.sleep(2000);
+            Thread.sleep(500);
         }catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
         }

@@ -25,7 +25,7 @@ public class Etape {
     @Column(name = "est_une_fin")
     private Boolean est_une_fin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "fk_id_story", nullable = false)
     private Histoire histoire;
 

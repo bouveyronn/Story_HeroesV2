@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("etapes/{idHistoire}")
+@RequestMapping("/etapes/{idHistoire}")
 public class EtapeController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class EtapeController {
 
     @GetMapping
     public List<Etape> getEtapes(@PathVariable(name = "idHistoire")Long idHistoire){
-        return etapeService.getEtapes(idHistoire);
+        return etapeService.getEtapesByStory(idHistoire);
     }
 
 }

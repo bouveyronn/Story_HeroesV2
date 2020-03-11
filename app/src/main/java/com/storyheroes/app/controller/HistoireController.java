@@ -1,17 +1,15 @@
 package com.storyheroes.app.controller;
 
 import com.storyheroes.app.model.Histoire;
-import com.storyheroes.app.repository.Histoire_Repository;
 import com.storyheroes.app.service.HistoireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/histoire")
-public class Histoire_Controller {
+public class HistoireController {
 
     //Déclaration des services
     @Autowired

@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "histoire")
@@ -29,6 +30,9 @@ public class Histoire {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "histoire")
     @JsonIgnoreProperties("histoire")
     private List<Etape> etapes;
+
+    @ManyToMany(mappedBy = "lesHistoires")
+    List<Genre> lesGenres;
 
     public Histoire() {
     }
@@ -87,5 +91,13 @@ public class Histoire {
 
     public void setEtapes(List<Etape> etapes) {
         this.etapes = etapes;
+    }
+
+    public List<Genre> getLesGenres() {
+        return lesGenres;
+    }
+
+    public void setLesGenres(List<Genre> lesGenres) {
+        this.lesGenres = lesGenres;
     }
 }

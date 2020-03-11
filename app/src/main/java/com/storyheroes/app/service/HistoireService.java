@@ -1,20 +1,19 @@
 package com.storyheroes.app.service;
 
 import com.storyheroes.app.model.Histoire;
-import com.storyheroes.app.repository.Histoire_Repository;
+import com.storyheroes.app.repository.HistoireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class HistoireService {
 
     //Déclaration des repository
     @Autowired
-    private Histoire_Repository histoireRepo;
+    private HistoireRepository histoireRepo;
 
 
     public List<Histoire> getHistoires(){

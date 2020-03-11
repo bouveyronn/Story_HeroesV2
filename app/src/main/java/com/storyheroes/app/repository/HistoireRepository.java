@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface Histoire_Repository extends JpaRepository<Histoire, Long> {
+public interface HistoireRepository extends JpaRepository<Histoire, Long> {
 
 
 

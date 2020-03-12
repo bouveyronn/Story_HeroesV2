@@ -1,14 +1,19 @@
 package com.storyheroes.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "histoire")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class)
 public class Histoire {
 
     @Id
@@ -28,21 +33,30 @@ public class Histoire {
     private String image;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "histoire")
-    @JsonIgnoreProperties("histoire")
+    @JsonIgnoreProperties(value = "histoire")
     private List<Etape> etapes;
 
-    @ManyToMany(mappedBy = "lesHistoires")
-    List<Genre> lesGenres;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "histoire_genre",
+            joinColumns = {@JoinColumn(name = "fk_id_histoire")},
+            inverseJoinColumns = {@JoinColumn(name = "fk_id_genre")}
+    )
+    @JsonIgnoreProperties(value = "histoires")
+    Set<Genre> genres = new HashSet<>();
 
     public Histoire() {
     }
 
-    public Histoire(Long id, String resume, Boolean est_publiee, String image, List<Etape> etapes){
+    public Histoire(Long id, String titre, String resume, Boolean est_publiee, String image, List<Etape> etapes, Set<Genre> genres) {
         this.id = id;
+        this.titre = titre;
         this.resume = resume;
         this.est_publiee = est_publiee;
         this.image = image;
         this.etapes = etapes;
+        this.genres = genres;
     }
 
     public Long getId() {
@@ -93,11 +107,11 @@ public class Histoire {
         this.etapes = etapes;
     }
 
-    public List<Genre> getLesGenres() {
-        return lesGenres;
+    public Set<Genre> getGenres() {
+        return genres;
     }
 
-    public void setLesGenres(List<Genre> lesGenres) {
-        this.lesGenres = lesGenres;
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
 }

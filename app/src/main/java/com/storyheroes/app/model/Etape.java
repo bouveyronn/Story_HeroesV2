@@ -1,5 +1,7 @@
 package com.storyheroes.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,8 +23,9 @@ public class Etape {
     @Column(name = "est_une_fin")
     private Boolean est_une_fin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_id_histoire", nullable = false)
+    @JsonIgnoreProperties(value = "etapes")
     private Histoire histoire;
 
     public Etape() {

@@ -22,4 +22,9 @@ public class EtapeController {
         return etapeService.getEtapesByStory(idHistoire);
     }
 
+    @GetMapping(value = "/{idEtape}")
+    public Etape getEtape(@PathVariable(name = "idEtape")Long idEtape){
+        return etapeService.getEtapeById(idEtape);
+    }
+
 }

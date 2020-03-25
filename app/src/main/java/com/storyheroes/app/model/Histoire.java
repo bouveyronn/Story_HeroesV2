@@ -13,7 +13,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "histoire")
-@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class)
 public class Histoire {
 
     @Id
@@ -32,6 +31,9 @@ public class Histoire {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "fk_id_auteur")
+    private Long fk_id_auteur = 1L;
+
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "histoire")
     @JsonIgnoreProperties(value = "histoire")
     private List<Etape> etapes;
@@ -49,12 +51,13 @@ public class Histoire {
     public Histoire() {
     }
 
-    public Histoire(Long id, String titre, String resume, Boolean est_publiee, String image, List<Etape> etapes, Set<Genre> genres) {
+    public Histoire(Long id, String titre, String resume, Boolean est_publiee, String image, Long fk_id_auteur, List<Etape> etapes, Set<Genre> genres) {
         this.id = id;
         this.titre = titre;
         this.resume = resume;
         this.est_publiee = est_publiee;
         this.image = image;
+        this.fk_id_auteur = fk_id_auteur;
         this.etapes = etapes;
         this.genres = genres;
     }
@@ -113,5 +116,13 @@ public class Histoire {
 
     public void setGenres(Set<Genre> genres) {
         this.genres = genres;
+    }
+
+    public Long getFk_id_auteur() {
+        return fk_id_auteur;
+    }
+
+    public void setFk_id_auteur(Long fk_id_auteur) {
+        this.fk_id_auteur = fk_id_auteur;
     }
 }

@@ -3,12 +3,13 @@ package com.storyheroes.app.controller;
 import com.storyheroes.app.model.Histoire;
 import com.storyheroes.app.service.HistoireService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/histoire")
+@RequestMapping("/histoires")
 public class HistoireController {
 
     //Déclaration des services
@@ -32,6 +33,11 @@ public class HistoireController {
         return histoireService.getHistoireBySearch(search);
     }
 
-    
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void createHistoire(@RequestBody Histoire histoire){
+        this.histoireService.ajouterHistoire(histoire);
+    }
+
+
 
 }

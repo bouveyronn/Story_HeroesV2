@@ -24,4 +24,7 @@ public class EtapeService {
         return histoire_repository.findById(idHistoire).get().getEtapes();
     }
 
+    public Etape getEtapeById(Long idEtape) {
+        return etapeRepo.findById(idEtape).get();
+    }
 }

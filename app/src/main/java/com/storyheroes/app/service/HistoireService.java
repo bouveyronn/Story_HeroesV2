@@ -41,4 +41,7 @@ public class HistoireService {
 
     }
 
+    public void ajouterHistoire(Histoire histoire) {
+        this.histoireRepo.save(histoire);
+    }
 }

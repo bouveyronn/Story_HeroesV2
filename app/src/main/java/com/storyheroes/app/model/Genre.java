@@ -50,11 +50,11 @@ public class Genre {
         this.libelle = libelle;
     }
 
-    public Set<Histoire> getHistoires() {
-        return histoires;
-    }
-
-    public void setHistoires(Set<Histoire> histoires) {
-        this.histoires = histoires;
-    }
+//    public Set<Histoire> getHistoires() {
+//        return histoires;
+//    }
+//
+//    public void setHistoires(Set<Histoire> histoires) {
+//        this.histoires = histoires;
+//    }
 }

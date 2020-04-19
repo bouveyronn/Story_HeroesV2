@@ -18,4 +18,8 @@ public class GenreService {
     public List<Genre> getAllGenres(){
         return genreRepository.findAll();
     }
+
+    public Genre getGenreById(Long id) {
+        return genreRepository.findById(id).get();
+    }
 }

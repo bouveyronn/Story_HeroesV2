@@ -45,7 +45,7 @@ public class Histoire {
             joinColumns = {@JoinColumn(name = "fk_id_histoire")},
             inverseJoinColumns = {@JoinColumn(name = "fk_id_genre")}
     )
-    @JsonIgnoreProperties(value = "histoires")
+    @JsonIgnoreProperties(value = {"histoires"})
     Set<Genre> genres = new HashSet<>();
 
     public Histoire() {

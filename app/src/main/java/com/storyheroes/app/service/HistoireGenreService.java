@@ -21,4 +21,8 @@ public class HistoireGenreService {
     public List<HistoireGenre> getHistoireGenreByGenre(Long idGenre) {
         return histoireGenreRepository.findByGenre(idGenre);
     }
+
+    public void ajouterGenrePourUneHistoire(HistoireGenre histoireGenre) {
+        this.histoireGenreRepository.save(histoireGenre);
+    }
 }

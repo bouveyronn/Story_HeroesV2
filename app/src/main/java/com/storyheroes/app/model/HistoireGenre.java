@@ -1,8 +1,11 @@
 package com.storyheroes.app.model;
 
+import com.storyheroes.app.multiplePK.HistoireGenrePK;
+
 import javax.persistence.*;
 
 @Entity
+@IdClass(HistoireGenrePK.class)
 @Table(name = "histoire_genre")
 public class HistoireGenre {
 
@@ -10,6 +13,7 @@ public class HistoireGenre {
     @Column(name = "fk_id_histoire")
     private Long histoire;
 
+    @Id
     @Column(name = "fk_id_genre")
     private Long genre;
 

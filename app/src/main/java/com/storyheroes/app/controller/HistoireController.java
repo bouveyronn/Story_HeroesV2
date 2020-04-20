@@ -1,5 +1,6 @@
 package com.storyheroes.app.controller;
 
+import com.storyheroes.app.model.Genre;
 import com.storyheroes.app.model.Histoire;
 import com.storyheroes.app.service.HistoireService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,6 @@ public class HistoireController {
     public void createHistoire(@RequestBody Histoire histoire){
         this.histoireService.ajouterHistoire(histoire);
     }
-
 
 
 }

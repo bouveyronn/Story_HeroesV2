@@ -22,4 +22,8 @@ public class GenreService {
     public Genre getGenreById(Long id) {
         return genreRepository.findById(id).get();
     }
+
+    public void ajouterGenre(Genre genre) {
+        genreRepository.save(genre);
+    }
 }

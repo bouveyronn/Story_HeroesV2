@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "etape")
@@ -34,6 +36,9 @@ public class Etape {
     @JsonIgnoreProperties(value = "etape")
     private List<Choix> choix;
 
+    @Transient
+    private Long num_etape;
+
     public Etape() {
     }
 
@@ -45,6 +50,7 @@ public class Etape {
         this.est_une_fin = est_une_fin;
         this.histoire = histoire;
         this.choix = choix;
+        this.num_etape = null;
     }
 
     public Long getId() {
@@ -101,5 +107,13 @@ public class Etape {
 
     public void setChoix(List<Choix> choix) {
         this.choix = choix;
+    }
+
+    public Long getNum_etape() {
+        return num_etape;
+    }
+
+    public void setNum_etape(Long num_etape) {
+        this.num_etape = num_etape;
     }
 }

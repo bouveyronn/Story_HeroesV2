@@ -48,6 +48,9 @@ public class Histoire {
     @JsonIgnoreProperties(value = {"histoires"})
     Set<Genre> genres = new HashSet<>();
 
+    @Transient
+    private Long num_etape;
+
     public Histoire() {
     }
 

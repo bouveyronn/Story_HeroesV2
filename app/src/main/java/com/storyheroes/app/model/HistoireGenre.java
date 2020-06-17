@@ -17,6 +17,9 @@ public class HistoireGenre {
     @Column(name = "fk_id_genre")
     private Long genre;
 
+    @Transient
+    private Histoire uneHistoire;
+
     public HistoireGenre() {
     }
 
@@ -39,5 +42,13 @@ public class HistoireGenre {
 
     public void setGenre(Long genre) {
         this.genre = genre;
+    }
+
+    public Histoire getUneHistoire() {
+        return uneHistoire;
+    }
+
+    public void setUneHistoire(Histoire uneHistoire) {
+        this.uneHistoire = uneHistoire;
     }
 }

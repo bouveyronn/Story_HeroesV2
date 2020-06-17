@@ -12,4 +12,6 @@ public interface HistoireRepository extends JpaRepository<Histoire, Long> {
 
 
     List<Histoire> findByTitreContaining(String titre);
+
+    Histoire getById(Long histoire);
 }
